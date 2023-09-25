@@ -90,11 +90,9 @@ else:
             logging.warning("Output DataFrame matches the expected schema by the number of fields and respective data types but doesn't match by column names.")
         else:
             message = "Output DataFrame matches the expected schema by the number of fields but doesn't match by data types."
-            logging.error(message)
             raise Exception(message)
     else:
         message = "Output DataFrame doesn't match the expected schema by the number of fields."
-        logging.error(message)
         raise Exception(message)
 
 # Storing output dataframe into `client_data` folder:
