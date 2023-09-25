@@ -25,14 +25,12 @@ jobs:
     - name: Run and test the app
       run: python app.py --df1_path dataset_one.csv --df2_path dataset_two.csv --values_to_filter "United Kingdom,Netherlands"
 
-    - name: Commit generated files to container repository
+    - name: Commit generated files to the repository
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "github-actions"
+        git config credential.helper store
+        echo "https://$GH_PAT@github.com" > ~/.git-credentials
         git add .
         git commit -m "Add generated files"
-
-    - name: Push files to Simple-PySpark-app-Test on GitHub
-      uses: stefanzweifel/git-auto-commit-action@v4
-      with:
-        commit_message: Add generated files
+        git push
