@@ -27,10 +27,9 @@ jobs:
 
     - name: Commit and push generated files
       run: |
-        git init
+        git config --global user.email alfieiev@gmail.com
+        git config --global user.name CyberIgor
         git add .
         git commit -m "Add generated files"
-        git branch -M main
         git remote add origin https://github.com/CyberIgor/Simple-PySpark-app-Test
         git push origin main
-        git push
