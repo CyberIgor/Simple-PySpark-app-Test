@@ -29,8 +29,6 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "github-actions"
-        git config credential.helper store
-        echo "https://$GH_PAT@github.com" > ~/.git-credentials
         git add .
         git commit -m "Add generated files"
         git branch -M main
