@@ -30,8 +30,9 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "github-actions"
         git config credential.helper store
-        echo "https://github.com" > ~/.git-credentials
-        git checkout $GITHUB_REF
+        echo "https://$GH_PAT@github.com" > ~/.git-credentials
         git add .
         git commit -m "Add generated files"
-        git push
+        git branch -M main
+        git remote add origin-pyspark-app https://github.com/CyberIgor/Simple-PySpark-app-Test
+        git push origin-pyspark-app main
