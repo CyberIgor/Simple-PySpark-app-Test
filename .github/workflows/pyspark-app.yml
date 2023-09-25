@@ -29,6 +29,8 @@ jobs:
       run: |
         git config user.name CyberIgor
         git config user.email alfieiev@gmail.com
+        git config credential.helper store
+        echo "https://$GH_PAT@github.com" > ~/.git-credentials
         git add .
         git commit -m "Add generated files"
         git push
