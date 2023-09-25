@@ -33,6 +33,6 @@ jobs:
         git commit -m "Add generated files"
 
     - name: Push files to Simple-PySpark-app-Test on GitHub
-      uses: ad-m/github-push-action@master
+      uses: stefanzweifel/git-auto-commit-action@v4
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        commit_message: Add generated files
