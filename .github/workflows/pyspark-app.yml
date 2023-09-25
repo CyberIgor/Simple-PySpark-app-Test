@@ -29,8 +29,11 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "github-actions"
+        git remote set-url origin https://$GH_PAT@github.com/$GITHUB_REPOSITORY
+        git fetch origin
+        git checkout $GITHUB_REF
+        git branch -u origin/$GITHUB_REF
         git config credential.helper store
-        echo "https://$GH_PAT@github.com" > ~/.git-credentials
         git add .
         git commit -m "Add generated files"
         git push
