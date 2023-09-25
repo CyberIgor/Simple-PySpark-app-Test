@@ -25,12 +25,6 @@ jobs:
     - name: Run and test the app
       run: python app.py --df1_path dataset_one.csv --df2_path dataset_two.csv --values_to_filter "United Kingdom,Netherlands"
 
-    - name: Commit and push generated files
-      run: |
-        git config user.name CyberIgor
-        git config user.email alfieiev@gmail.com
-        git config credential.helper store
-        echo "https://$GH_PAT@github.com" > ~/.git-credentials
-        git add .
-        git commit -m "Add generated files"
-        git push
+    - uses: ammaraskar/sphinx-action@master
+      with:
+        docs-folder: "."
