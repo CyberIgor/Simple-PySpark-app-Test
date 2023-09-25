@@ -98,4 +98,4 @@ else:
         raise Exception(message)
 
 # Storing output dataframe into `client_data` folder:
-output_df.write.csv("client_data/output_df.csv", header=True, mode="overwrite")
+output_df.write.csv("client_data", header=True, mode="overwrite")
