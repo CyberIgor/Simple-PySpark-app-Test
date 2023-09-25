@@ -4,3 +4,5 @@
 
 2023-09-25 20:46:03,509 - INFO: Output DataFrame completely matches the expected schema.
 
+2023-09-25 21:06:13,443 - WARNING: Output DataFrame matches the expected schema by the number of fields and respective data types but doesn't match by column names.
+
