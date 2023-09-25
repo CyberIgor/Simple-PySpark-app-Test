@@ -25,6 +25,12 @@ jobs:
     - name: Run and test the app
       run: python app.py --df1_path dataset_one.csv --df2_path dataset_two.csv --values_to_filter "United Kingdom,Netherlands"
 
-    - uses: ammaraskar/sphinx-action@master
-      with:
-        docs-folder: "."
+    - name: Commit and push generated files
+      run: |
+        git init
+        git add .
+        git commit -m "Add generated files"
+        git branch -M main
+        git remote add origin https://github.com/CyberIgor/Simple-PySpark-app-Test
+        git push origin main
+        git push
