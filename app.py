@@ -58,7 +58,7 @@ values_to_filter = args.values_to_filter
 
 # Reading csv-files and omitting redundant fields:
 df1 = spark.read.csv(df1_path, header=True, inferSchema=True).drop(*["first_name", "last_name"])
-df2 = spark.read.csv(df2_path, header=True, inferSchema=True)
+df2 = spark.read.csv(df2_path, header=True, inferSchema=True).drop("cc_n")
 
 # Filtering clients table and joining it with transactions table:
 output_df = filtering(df1, values_to_filter).join(df2, on="id", how="inner")
@@ -70,7 +70,7 @@ column_mapping = {
 }
 
 # Renaming columns:
-output_df = rename_columns(output_df, column_mapping)
+# output_df = rename_columns(output_df, column_mapping)
 
 # Displaying the number of records in the output dataframe:
 output_df.show()
