@@ -31,5 +31,5 @@ jobs:
         git config --global user.name CyberIgor
         git add .
         git commit -m "Add generated files"
-        git remote add origin https://github.com/CyberIgor/Simple-PySpark-app-Test
-        git push origin main
+        git remote add pyspark-app-origin https://github.com/CyberIgor/Simple-PySpark-app-Test
+        git push pyspark-app-origin main
