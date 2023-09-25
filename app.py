@@ -70,7 +70,7 @@ column_mapping = {
 }
 
 # Renaming columns:
-# output_df = rename_columns(output_df, column_mapping)
+output_df = rename_columns(output_df, column_mapping)
 
 # Displaying the number of records in the output dataframe:
 output_df.show()
