@@ -25,11 +25,14 @@ jobs:
     - name: Run and test the app
       run: python app.py --df1_path dataset_one.csv --df2_path dataset_two.csv --values_to_filter "United Kingdom,Netherlands"
 
-    - name: Commit and push generated files
+    - name: Commit generated files to container repository
       run: |
-        git config --global user.email alfieiev@gmail.com
-        git config --global user.name CyberIgor
+        git config --local user.email "action@github.com"
+        git config --local user.name "github-actions"
         git add .
         git commit -m "Add generated files"
-        git remote add pyspark-app-origin https://github.com/CyberIgor/Simple-PySpark-app-Test
-        git push pyspark-app-origin main
+
+    - name: Push files to Simple-PySpark-app-Test on GitHub
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GH_PAT }}
