@@ -20,13 +20,18 @@ args = parser.parse_args()
 spark = SparkSession.builder.appName("ReadCSV").getOrCreate()
 
 # Creating custom function for filtering dataframe:
-def filtering(df: DataFrame, values_to_filter: list, filtering_field="country"):
+def filtering(df: DataFrame, values_to_filter: str, filtering_field="country"):
     """
     Filter PySpark DataFrame using specified values of a filtering field.
-
+    
     Parameters:
         df (DataFrame): The input DataFrame.
-        values_to_filter (list): A list of values to filter by.
+        
+        values_to_filter (str): A list of values to filter by (must be passed as a string).
+        If more than one is required, than values must be separated by a comma and without spaces.
+        Exception - values which themselves contain commas (like "United Kingdom" when filtering by country name).
+        
+        filtering_field (str): a field name which values will be used to filter by.
 
     Returns:
         DataFrame: A DataFrame filterd by specified values of a given column.
