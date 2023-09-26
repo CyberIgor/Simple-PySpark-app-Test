@@ -24,7 +24,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Run and test the app
-      run: python app.py --df1_path dataset_one.csv --df2_path dataset_two.csv --values_to_filter ${{ github.event.inputs.valuesToFilterBy }}
+      run: python app.py --df1_path dataset_one.csv --df2_path dataset_two.csv --values_to_filter "${{ github.event.inputs.valuesToFilterBy }}"
 
     - name: Commit generated files to the repository
       run: |
