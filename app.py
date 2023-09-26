@@ -1,3 +1,32 @@
+"""
+This script reads two CSV files using PySpark, filters rows from the first DataFrame based on specified values, 
+performs an inner join with the second DataFrame, renames columns, and saves the resulting DataFrame to a CSV file.
+
+Usage:
+    python app.py --df1_path path_to_clients_file --df2_path path_to_transactions_file --values_to_filter values_to_filter
+
+Arguments:
+    --df1_path (str): Path to the CSV file containing client data.
+    --df2_path (str): Path to the CSV file containing transaction data.
+    --values_to_filter (str): Comma-separated values used for filtering the client DataFrame.
+
+Output:
+    - The resulting DataFrame after joining and renaming columns is displayed.
+    - The number of rows in the resulting DataFrame is printed.
+    - A log file ('events.log') is generated to record script events.
+
+Note:
+    This script assumes that the input CSV files have headers and infers the schema.
+
+Dependencies:
+    - PySpark
+    - argparse
+    - logging
+
+Example:
+    python app.py --df1_path clients.csv --df2_path transactions.csv --values_to_filter USA,Canada
+"""
+
 from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql.types import StructType, StructField, StringType, IntegerType
 import logging
