@@ -1,11 +1,12 @@
 name: Simple PySpark app Test
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
   workflow_dispatch:
+    inputs:
+      valuesToFilterBy:
+        description: 'Specify values to filter records by (use comma without spaces if there are more than one)'
+        required: true
+        default: 'United Kingdom,Netherlands'
 
 jobs:
   build:
@@ -23,7 +24,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Run and test the app
-      run: python app.py --df1_path dataset_one.csv --df2_path dataset_two.csv --values_to_filter "United Kingdom,Netherlands"
+      run: python app.py --df1_path dataset_one.csv --df2_path dataset_two.csv --values_to_filter ${{ github.event.inputs.valuesToFilterBy }}
 
     - name: Commit generated files to the repository
       run: |
