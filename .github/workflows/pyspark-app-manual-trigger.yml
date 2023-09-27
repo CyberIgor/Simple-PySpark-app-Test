@@ -27,12 +27,11 @@ jobs:
         pip install -r requirements.txt
 
     - name: Unit tests
-      run: |
-        cp src/app.py app.py
-        python -m pytest
+      run: python -m pytest
     
     - name: Run app and log events
       run: |
+        cp src/app.py app.py
         python app.py --df1_path dataset_one.csv --df2_path dataset_two.csv --values_to_filter "${{ github.event.inputs.valuesToFilterBy }}"
 
     - name: Commit generated files to the repository
