@@ -43,7 +43,7 @@ jobs:
         git push origin-pyspark-app main
 
     - name: Package app into a source distribution file
-      run: python setup.py sdist
+      run: python -m build
 
     - name: Upload artifact
       uses: actions/upload-artifact@v2
