@@ -44,10 +44,9 @@ jobs:
 
     - name: Package app into a source distribution file
       run: python -m build
-      working-directory: ${{ github.workspace }}/dist
 
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
         name: KaommatiPara-data-analysis-pack
-        path: dist/
+        path: ./dist/
