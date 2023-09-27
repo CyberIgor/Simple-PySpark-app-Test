@@ -8,3 +8,5 @@
   5. Renaming columns.
   6. Testing the output dataframe against expected schema.
   7. Recording test results in the *events.log*.
+
+[![Workflow to trigger manually](https://github.com/CyberIgor/Simple-PySpark-app-Test/actions/workflows/pyspark-app-manual-trigger.yml/badge.svg)](https://github.com/CyberIgor/Simple-PySpark-app-Test/actions/workflows/pyspark-app-manual-trigger.yml)
