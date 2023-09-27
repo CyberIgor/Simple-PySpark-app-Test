@@ -1,3 +1,5 @@
+from pyspark.sql import DataFrame
+
 def filtering(df: DataFrame, values_to_filter: str, filtering_field="country"):
     return df.filter(df[filtering_field].isin(*values_to_filter.split(",")))
 
