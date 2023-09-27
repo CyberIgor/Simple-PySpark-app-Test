@@ -58,7 +58,7 @@ def test_filtering(session, test_df, input_schema):
     filtered_df = filtering(test_df, 'United Kingdom,Netherlands')
     assert_df_equality(expected_df, filtered_df)
 
-def test_rename_columns(df, df2):
+def test_rename_columns(test_df, output_df):
     column_mapping = {
         "id": "client_identifier",
         "btc_a": "bitcoin_address",
