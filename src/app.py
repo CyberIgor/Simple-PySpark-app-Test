@@ -33,7 +33,7 @@ import logging
 import argparse
 
 logging.basicConfig(filename='events.log', level=logging.INFO, 
-                    format='%(asctime)s - %(levelname)s: %(message)s\n', filemode='a')
+                    format='%(asctime)s - %(levelname)s: %(message)s', filemode='a')
 
 # Create an ArgumentParser object:
 parser = argparse.ArgumentParser(description="Parser for the required arguments")
@@ -44,7 +44,7 @@ parser.add_argument('--values_to_filter', type=str, help='Values to filter')
 
 # Parse the command-line arguments:
 args = parser.parse_args()
-logging.info("Three arguments were received from the command line.")
+logging.info("\nThree arguments were received from the command line.")
 
 # Starting Spark session:
 spark = SparkSession.builder.appName("ReadCSV").getOrCreate()
@@ -124,16 +124,16 @@ expected_schema = StructType([StructField(col, data_type, True) for col, data_ty
 if output_df.schema == expected_schema:
     logging.info("Output DataFrame completely matches the expected schema.")
     output_df.write.csv("client_data", header=True, mode="overwrite")
-    logging.info("New data was saved to 'client_data' folder.")
+    logging.info("New data was saved to 'client_data' folder.\n")
 else:
     if len(output_df.schema) == len(expected_schema):
         if all(output_df.schema[i].dataType == expected_schema[i].dataType for i in range(len(expected_schema))):
             logging.warning("Output DataFrame matches the expected schema by the number of fields and respective data types but doesn't match by column names.")
             output_df.write.csv("client_data", header=True, mode="overwrite")
-            logging.info("New data was saved to 'client_data' folder.")
+            logging.info("New data was saved to 'client_data' folder.\n")
         else:
             logging.error("Output DataFrame matches the expected schema by the number of fields but doesn't match by data types.")
-            logging.error("No new data was saved to 'client_data' folder. The issue with data types must be fixed.")
+            logging.error("No new data was saved to 'client_data' folder. The issue with data types must be fixed.\n")
     else:
         logging.error("Output DataFrame doesn't match the expected schema by the number of fields.")
-        logging.error("No new data was saved to 'client_data' folder. The issue with number of columns must be fixed.")
+        logging.error("No new data was saved to 'client_data' folder. The issue with number of columns must be fixed.\n")
