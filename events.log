@@ -1,0 +1,8 @@
+2023-09-27 16:05:15,670 - INFO: Three arguments were received from the command line.
+2023-09-27 16:05:20,613 - INFO: Spark session has begun.
+2023-09-27 16:05:27,799 - INFO: Two PySpark dataframes were created out of CSV-files. Sensetive information has been omitted.
+2023-09-27 16:05:27,973 - INFO: Client records were filtered - and two dataframes were joined using 'id' field as a primary key.
+2023-09-27 16:05:28,000 - INFO: Output dataframe columns renamed.
+2023-09-27 16:05:30,089 - INFO: Output DataFrame completely matches the expected schema.
+2023-09-27 16:05:30,893 - INFO: New data was saved to 'client_data' folder.
+
