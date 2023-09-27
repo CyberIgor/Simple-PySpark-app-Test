@@ -13,7 +13,7 @@ def input_schema():
     return StructType([
         StructField('id', IntegerType(), True),
         StructField('email', StringType(), True),
-        StructField('counrty', StringType(), True),
+        StructField('country', StringType(), True),
         StructField('btc_a', StringType(), True),
         StructField('cc_t', StringType(), True)
     ])
@@ -23,7 +23,7 @@ def output_schema():
     return StructType([
         StructField('client_identifier', IntegerType(), True),
         StructField('email', StringType(), True),
-        StructField('counrty', StringType(), True),
+        StructField('country', StringType(), True),
         StructField('bitcoin_address', StringType(), True),
         StructField('credit_card_type', StringType(), True)
     ])
