@@ -1,6 +1,6 @@
 from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql.types import StructType, StructField, StringType, IntegerType
-from app import filtering, rename_columns
+from functions import filtering, rename_columns
 import pytest
 from chispa.dataframe_comparer import assert_df_equality
 
