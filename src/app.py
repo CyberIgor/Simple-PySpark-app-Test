@@ -44,7 +44,7 @@ parser.add_argument('--values_to_filter', type=str, help='Values to filter')
 
 # Parse the command-line arguments:
 args = parser.parse_args()
-logging.info("\nThree arguments were received from the command line.")
+logging.info("Three arguments were received from the command line.")
 
 # Starting Spark session:
 spark = SparkSession.builder.appName("ReadCSV").getOrCreate()
