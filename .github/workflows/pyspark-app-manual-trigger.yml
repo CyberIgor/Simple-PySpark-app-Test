@@ -31,12 +31,12 @@ jobs:
     
     - name: Run app and log events
       run: |
-        cp src/app.py app.py
+        cp src/{app.py,app_functions.py} .
         python app.py --df1_path dataset_one.csv --df2_path dataset_two.csv --values_to_filter "${{ github.event.inputs.valuesToFilterBy }}"
 
     - name: Commit generated files to the repository
       run: |
-        rm -f app.py
+        rm -f app.py -f app_functions.py
         git config --local user.email "action@github.com"
         git config --local user.name "github-actions"
         git add .
