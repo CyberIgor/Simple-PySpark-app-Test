@@ -48,7 +48,7 @@ jobs:
         rm -f app.py -f app_functions.py
         git config --local user.email "action@github.com"
         git config --local user.name "github-actions"
-        git checkout -b $BRANCH_NAME
+        git checkout $BRANCH_NAME
         git add .
         git commit -m "Add generated files"
         git remote add origin-pyspark-app https://github.com/CyberIgor/Simple-PySpark-app-Test
