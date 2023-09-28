@@ -1,4 +1,4 @@
-name: Workflow to trigger manually
+name: Workflow on commit
 
 on:
   push:
