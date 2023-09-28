@@ -9,6 +9,6 @@
   6. Testing the output dataframe against expected schema.
   7. Recording test results in the *events.log*.
 
-[![Workflow on commit](https://github.com/CyberIgor/Simple-PySpark-app-Test/actions/workflows/pyspark-app-on-commit.yml/badge.svg)](https://github.com/CyberIgor/Simple-PySpark-app-Test/actions/workflows/pyspark-app-on-commit.yml)
-
 [![Manually triggered workflow](https://github.com/CyberIgor/Simple-PySpark-app-Test/actions/workflows/pyspark-app-manual-trigger.yml/badge.svg)](https://github.com/CyberIgor/Simple-PySpark-app-Test/actions/workflows/pyspark-app-manual-trigger.yml)
+
+[![Workflow on commit](https://github.com/CyberIgor/Simple-PySpark-app-Test/actions/workflows/pyspark-app-on-commit.yml/badge.svg)](https://github.com/CyberIgor/Simple-PySpark-app-Test/actions/workflows/pyspark-app-on-commit.yml)
