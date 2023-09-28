@@ -1,4 +1,4 @@
-name: Workflow to trigger manually
+name: Manually triggered workflow
 
 on:
   workflow_dispatch:
