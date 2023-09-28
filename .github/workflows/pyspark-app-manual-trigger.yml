@@ -12,10 +12,19 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+      
     steps:
-    - uses: actions/checkout@v3
-    
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Extract branch name
+      run: |
+        BRANCH_NAME=$(basename $GITHUB_REF)
+        echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+
+    - name: Display branch name
+      run: echo "Current branch is $BRANCH_NAME"
+        
     - name: Set up Python 3.7
       uses: actions/setup-python@v3
       with:
@@ -34,16 +43,16 @@ jobs:
         cp src/{app.py,app_functions.py} .
         python app.py --df1_path dataset_one.csv --df2_path dataset_two.csv --values_to_filter "${{ github.event.inputs.valuesToFilterBy }}"
 
-    - name: Commit generated files to the repository
+    - name: Commit generated files to the current branch
       run: |
         rm -f app.py -f app_functions.py
         git config --local user.email "action@github.com"
         git config --local user.name "github-actions"
+        git checkout $BRANCH_NAME
         git add .
         git commit -m "Add generated files"
-        git branch -M main
         git remote add origin-pyspark-app https://github.com/CyberIgor/Simple-PySpark-app-Test
-        git push origin-pyspark-app main
+        git push origin-pyspark-app $BRANCH_NAME
 
     - name: Package app into a source distribution file
       run: python setup.py sdist
