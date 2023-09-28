@@ -173,4 +173,3 @@
 2023-09-28 20:21:15,426 - INFO: Output dataframe columns renamed.
 2023-09-28 20:21:17,113 - INFO: Output DataFrame completely matches the expected schema.
 2023-09-28 20:21:17,750 - INFO: New data was saved to 'client_data' folder.
-
