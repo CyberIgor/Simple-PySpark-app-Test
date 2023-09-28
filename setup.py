@@ -10,6 +10,6 @@ setup(
     version='1.0',
     description='A program for combining client data with Bitcoin transactions data',
     packages=find_packages(exclude=['tests']),
-    install_requires=requirements
-    url="https://github.com/CyberIgor/Simple-PySpark-app-Test"
+    install_requires='pyspark',
+    url='https://github.com/CyberIgor/Simple-PySpark-app-Test'
     )
