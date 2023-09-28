@@ -11,9 +11,11 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
     
     - name: Set up Python 3.7
       uses: actions/setup-python@v3
@@ -40,6 +42,7 @@ jobs:
         git config --local user.name "github-actions"
         git add .
         git commit -m "Add generated files"
+        git branch -M main
         git remote add origin-pyspark-app https://github.com/CyberIgor/Simple-PySpark-app-Test
         git push origin-pyspark-app main
 
