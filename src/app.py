@@ -29,13 +29,13 @@ Example:
 
 from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql.types import StructType, StructField, StringType, IntegerType
-from logging import getLogger, Formatter
+from logging import getLogger, Formatter, INFO
 from logging.handlers import RotatingFileHandler
 import argparse
 
 # Set up the logger
 logger = getLogger('my_app_logger')
-logger.setLevel(logging.INFO)
+logger.setLevel(INFO)
 
 # Create a RotatingFileHandler with a maximum file size of 5 MB and keep 5 backup files:
 log_file = 'events.log'
