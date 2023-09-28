@@ -40,7 +40,6 @@ jobs:
         git config --local user.name "github-actions"
         git add .
         git commit -m "Add generated files"
-        git branch -M main
         git remote add origin-pyspark-app https://github.com/CyberIgor/Simple-PySpark-app-Test
         git push origin-pyspark-app main
 
