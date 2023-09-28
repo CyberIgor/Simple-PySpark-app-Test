@@ -57,11 +57,11 @@ parser.add_argument('--values_to_filter', type=str, help='Values to filter')
 
 # Parse the command-line arguments:
 args = parser.parse_args()
-logging.info("Three arguments were received from the command line.")
+logger.info("Three arguments were received from the command line.")
 
 # Starting Spark session:
 spark = SparkSession.builder.appName("ReadCSV").getOrCreate()
-logging.info("Spark session has begun.")
+logger.info("Spark session has begun.")
 
 # Creating custom function for filtering dataframe:
 def filtering(df: DataFrame, values_to_filter: str, filtering_field="country"):
@@ -108,11 +108,11 @@ values_to_filter = args.values_to_filter
 # Reading csv-files and omitting redundant fields:
 df1 = spark.read.csv(df1_path, header=True, inferSchema=True).drop(*["first_name", "last_name"])
 df2 = spark.read.csv(df2_path, header=True, inferSchema=True).drop("cc_n")
-logging.info("Two PySpark dataframes were created out of CSV-files. Sensetive information has been omitted.")
+logger.info("Two PySpark dataframes were created out of CSV-files. Sensetive information has been omitted.")
 
 # Filtering clients table and joining it with transactions table:
 output_df = filtering(df1, values_to_filter).join(df2, on="id", how="inner")
-logging.info("Client records were filtered - and two dataframes were joined using 'id' field as a primary key.")
+logger.info("Client records were filtered - and two dataframes were joined using 'id' field as a primary key.")
 
 column_mapping = {
     "id": "client_identifier",
@@ -122,7 +122,7 @@ column_mapping = {
 
 # Renaming columns:
 output_df = rename_columns(output_df, column_mapping)
-logging.info("Output dataframe columns renamed.")
+logger.info("Output dataframe columns renamed.")
 
 # Displaying the number of records in the output dataframe:
 output_df.show()
@@ -135,18 +135,18 @@ expected_schema = StructType([StructField(col, data_type, True) for col, data_ty
 
 # Checking if the output dataframe matches the expected schema, logging events and storing output dataframe into `client_data` folder:
 if output_df.schema == expected_schema:
-    logging.info("Output DataFrame completely matches the expected schema.")
+    logger.info("Output DataFrame completely matches the expected schema.")
     output_df.write.csv("client_data", header=True, mode="overwrite")
-    logging.info("New data was saved to 'client_data' folder.\n")
+    logger.info("New data was saved to 'client_data' folder.\n")
 else:
     if len(output_df.schema) == len(expected_schema):
         if all(output_df.schema[i].dataType == expected_schema[i].dataType for i in range(len(expected_schema))):
-            logging.warning("Output DataFrame matches the expected schema by the number of fields and respective data types but doesn't match by column names.")
+            logger.warning("Output DataFrame matches the expected schema by the number of fields and respective data types but doesn't match by column names.")
             output_df.write.csv("client_data", header=True, mode="overwrite")
-            logging.info("New data was saved to 'client_data' folder.\n")
+            logger.info("New data was saved to 'client_data' folder.\n")
         else:
-            logging.error("Output DataFrame matches the expected schema by the number of fields but doesn't match by data types.")
-            logging.error("No new data was saved to 'client_data' folder. The issue with data types must be fixed.\n")
+            logger.error("Output DataFrame matches the expected schema by the number of fields but doesn't match by data types.")
+            logger.error("No new data was saved to 'client_data' folder. The issue with data types must be fixed.\n")
     else:
-        logging.error("Output DataFrame doesn't match the expected schema by the number of fields.")
-        logging.error("No new data was saved to 'client_data' folder. The issue with number of columns must be fixed.\n")
+        logger.error("Output DataFrame doesn't match the expected schema by the number of fields.")
+        logger.error("No new data was saved to 'client_data' folder. The issue with number of columns must be fixed.\n")
