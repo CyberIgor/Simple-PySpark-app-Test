@@ -27,7 +27,8 @@ Example:
     python app.py --df1_path clients.csv --df2_path transactions.csv --values_to_filter USA,Canada
 """
 
-from pyspark.sql import SparkSession, DataFrame
+from app_functions import *
+from pyspark.sql import SparkSession
 from pyspark.sql.types import StructType, StructField, StringType, IntegerType
 from logging import getLogger, Formatter, INFO
 from logging.handlers import RotatingFileHandler
