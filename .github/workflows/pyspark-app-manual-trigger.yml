@@ -12,17 +12,15 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
-    env:
-      BRANCH_NAME: ${{ steps.extract_branch.outputs.branch_name }}
       
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
 
     - name: Extract branch name
-      id: extract_branch
-      run: echo "::set-output name=branch_name::$(basename $GITHUB_REF)"
+      run: |
+        BRANCH_NAME=$(basename $GITHUB_REF)
+        echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
 
     - name: Display branch name
       run: echo "Current branch is $BRANCH_NAME"
