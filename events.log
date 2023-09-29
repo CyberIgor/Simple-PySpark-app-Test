@@ -205,6 +205,7 @@
 2023-09-28 20:48:48,932 - INFO: Output dataframe columns renamed.
 2023-09-28 20:48:50,820 - INFO: Output DataFrame completely matches the expected schema.
 2023-09-28 20:48:51,524 - INFO: New data was saved to 'client_data' folder.
+
 2023-09-29 07:37:00,957 - INFO: Three arguments were received from the command line.
 2023-09-29 07:37:04,752 - INFO: Spark session has begun.
 2023-09-29 07:37:10,468 - INFO: Two PySpark dataframes were created out of CSV-files. Sensetive information has been omitted.
