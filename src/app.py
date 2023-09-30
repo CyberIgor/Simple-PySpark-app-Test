@@ -32,7 +32,7 @@ from pyspark.sql import SparkSession
 from pyspark.sql.types import StructType, StructField, StringType, IntegerType
 from logging import getLogger, Formatter, INFO
 from logging.handlers import RotatingFileHandler
-import argparse
+from argparse import ArgumentParser
 
 # Set up the logger
 logger = getLogger('my_app_logger')
@@ -50,7 +50,7 @@ handler.setFormatter(formatter)
 logger.addHandler(handler)
 
 # Create an ArgumentParser object:
-parser = argparse.ArgumentParser(description="Parser for the required arguments")
+parser = ArgumentParser(description="Parser for the required arguments")
 
 parser.add_argument('--df1_path', type=str, help='Path to clients file')
 parser.add_argument('--df2_path', type=str, help='Path to transactions file')
