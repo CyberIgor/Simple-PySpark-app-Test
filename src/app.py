@@ -108,7 +108,8 @@ values_to_filter = args.values_to_filter
 
 # Reading csv-files and omitting redundant fields:
 df1 = spark.read.csv(df1_path, header=True, inferSchema=True).drop(*["first_name", "last_name"])
-df2 = spark.read.csv(df2_path, header=True, inferSchema=True).drop("cc_n")
+# df2 = spark.read.csv(df2_path, header=True, inferSchema=True).drop("cc_n")
+df2 = spark.read.csv(df2_path, header=True, inferSchema=True)
 logger.info("Two PySpark dataframes were created out of CSV-files. Sensetive information has been omitted.")
 
 # Filtering clients table and joining it with transactions table:
@@ -131,7 +132,7 @@ print(f"\nNumber of rows in output dataframe: {output_df.count()}\n")
 
 # Setting up the correct dataframe schema for further testing:
 columns = ["client_identifier", "email", "country", "bitcoin_address", "credit_card_type"]
-data_types = [StringType(), StringType(), StringType(), StringType(), StringType()]
+data_types = [IntegerType(), StringType(), StringType(), StringType(), StringType()]
 expected_schema = StructType([StructField(col, data_type, True) for col, data_type in zip(columns, data_types)])
 
 # Checking if the output dataframe matches the expected schema, logging events and storing output dataframe into `client_data` folder:
