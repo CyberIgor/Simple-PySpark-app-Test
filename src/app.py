@@ -34,7 +34,7 @@ from logging import getLogger, Formatter, INFO
 from logging.handlers import RotatingFileHandler
 from argparse import ArgumentParser
 
-# Set up the logger
+# Set up the logger:
 logger = getLogger('my_app_logger')
 logger.setLevel(INFO)
 
@@ -46,12 +46,13 @@ handler = RotatingFileHandler(log_file, maxBytes=5 * 1024 * 1024, backupCount=5)
 formatter = Formatter('%(asctime)s - %(levelname)s: %(message)s')
 handler.setFormatter(formatter)
 
-# Add the handler to the logger
+# Add the handler to the logger:
 logger.addHandler(handler)
 
-# Create an ArgumentParser object:
+# Create an ArgumentParser object to parse arguments from the command line:
 parser = ArgumentParser(description="Parser for the required arguments")
 
+# Add three arguments to the previously created parser:
 parser.add_argument('--df1_path', type=str, help='Path to clients file')
 parser.add_argument('--df2_path', type=str, help='Path to transactions file')
 parser.add_argument('--values_to_filter', type=str, help='Values to filter')
