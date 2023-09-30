@@ -1,4 +1,4 @@
-client_identifier,email,country,bitcoin_address,credit_card_type
+id,email,country,btc_a,cc_t
 18,rdrinanh@odnoklassniki.ru,United Kingdom,1ErM8yuF3ytzzxLy1uPvQuRveLBygxN15x,china-unionpay
 32,wbamfordv@t-online.de,United Kingdom,12sxmYnPcADAXw1YkxdapRsft2PwHZke7A,maestro
 33,swestallw@blinklist.com,United Kingdom,1GZ7QB7GUFSWnkBHmsj4C4EZYMWni6BVn4,mastercard

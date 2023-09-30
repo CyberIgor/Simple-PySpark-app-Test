@@ -230,3 +230,10 @@
 2023-09-29 08:03:56,045 - INFO: Output DataFrame completely matches the expected schema.
 2023-09-29 08:03:56,799 - INFO: New data was saved to 'client_data' folder.
 
+2023-09-30 10:23:27,443 - INFO: Three arguments were received from the command line.
+2023-09-30 10:23:31,154 - INFO: Spark session has begun.
+2023-09-30 10:23:36,738 - INFO: Two PySpark dataframes were created out of CSV-files. Sensetive information has been omitted.
+2023-09-30 10:23:36,794 - INFO: Client records were filtered - and two dataframes were joined using 'id' field as a primary key.
+2023-09-30 10:23:38,425 - WARNING: Output DataFrame matches the expected schema by the number of fields and respective data types but doesn't match by column names.
+2023-09-30 10:23:39,094 - INFO: New data was saved to 'client_data' folder.
+
