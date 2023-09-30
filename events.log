@@ -245,3 +245,11 @@
 2023-09-30 10:30:32,193 - ERROR: Output DataFrame matches the expected schema by the number of fields but doesn't match by data types.
 2023-09-30 10:30:32,193 - ERROR: No new data was saved to 'client_data' folder. The issue with data types must be fixed.
 
+2023-09-30 10:37:11,725 - INFO: Three arguments were received from the command line.
+2023-09-30 10:37:15,312 - INFO: Spark session has begun.
+2023-09-30 10:37:21,059 - INFO: Two PySpark dataframes were created out of CSV-files. Sensetive information has been omitted.
+2023-09-30 10:37:21,114 - INFO: Client records were filtered - and two dataframes were joined using 'id' field as a primary key.
+2023-09-30 10:37:21,150 - INFO: Output dataframe columns renamed.
+2023-09-30 10:37:22,783 - ERROR: Output DataFrame doesn't match the expected schema by the number of fields.
+2023-09-30 10:37:22,783 - ERROR: No new data was saved to 'client_data' folder. The issue with number of columns must be fixed.
+
