@@ -122,8 +122,8 @@ column_mapping = {
 }
 
 # Renaming columns:
-# output_df = rename_columns(output_df, column_mapping)
-# logger.info("Output dataframe columns renamed.")
+output_df = rename_columns(output_df, column_mapping)
+logger.info("Output dataframe columns renamed.")
 
 # Displaying the number of records in the output dataframe:
 output_df.show()
@@ -131,7 +131,7 @@ print(f"\nNumber of rows in output dataframe: {output_df.count()}\n")
 
 # Setting up the correct dataframe schema for further testing:
 columns = ["client_identifier", "email", "country", "bitcoin_address", "credit_card_type"]
-data_types = [IntegerType(), StringType(), StringType(), StringType(), StringType()]
+data_types = [StringType(), StringType(), StringType(), StringType(), StringType()]
 expected_schema = StructType([StructField(col, data_type, True) for col, data_type in zip(columns, data_types)])
 
 # Checking if the output dataframe matches the expected schema, logging events and storing output dataframe into `client_data` folder:
