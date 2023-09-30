@@ -122,8 +122,8 @@ column_mapping = {
 }
 
 # Renaming columns:
-output_df = rename_columns(output_df, column_mapping)
-logger.info("Output dataframe columns renamed.")
+# output_df = rename_columns(output_df, column_mapping)
+# logger.info("Output dataframe columns renamed.")
 
 # Displaying the number of records in the output dataframe:
 output_df.show()
