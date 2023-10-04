@@ -31,11 +31,11 @@ def output_schema():
 @pytest.fixture()
 def test_data():
     return [
-            (1,"feusden0@ameblo.jp", "France", "1wjtPamAZeGhRnZfhBAHHHjNvnHefd2V2", "visa-electron"),
-            (18, "rdrinanh@odnoklassniki.ru", "United Kingdom", "1ErM8yuF3ytzzxLy1uPvQuRveLBygxN15x", "china-unionpay"),
-            (20, "cmartinettoj@mapy.cz", "France", "14iPptCE59bQXGoczEsSkk4ejTyaKq9mxt", "jcb"),
-            (36, "dbuckthorpz@tmall.com", "Netherlands", "15X53Z9B9jUNrvFpbr7D554uSc5RL7Pnkg", "diners-club-international"),
-            (62, "bbarham1p@wisc.edu", "Netherlands", "16qpYVt6YAAx4JYjzbA8SwTUHoTyB4twRF", "jcb")
+            (1,"dummy@gmail.com", "France", "dummy-transaction", "mastercard"),
+            (18, "some-box@mail.ru", "United Kingdom", "some-case", "visa"),
+            (20, "simple-mail@outlook.com", "France", "imaginary-purchase", "american-express"),
+            (36, "hoax@gmail.com", "Netherlands", "another-dummy-transaction", "visa"),
+            (62, "figment@mail.ru", "Netherlands", "mock-deal", "visa")
     ]
 
 
@@ -49,9 +49,9 @@ def output_df(session, test_data, output_schema):
 
 def test_filtering(session, test_df, input_schema):
     expected_data = [
-            (18, "rdrinanh@odnoklassniki.ru", "United Kingdom", "1ErM8yuF3ytzzxLy1uPvQuRveLBygxN15x", "china-unionpay"),
-            (36, "dbuckthorpz@tmall.com", "Netherlands", "15X53Z9B9jUNrvFpbr7D554uSc5RL7Pnkg", "diners-club-international"),
-            (62, "bbarham1p@wisc.edu", "Netherlands", "16qpYVt6YAAx4JYjzbA8SwTUHoTyB4twRF", "jcb")
+            (18, "some-box@mail.ru", "United Kingdom", "some-case", "visa"),
+            (36, "hoax@gmail.com", "Netherlands", "another-dummy-transaction", "visa"),
+            (62, "figment@mail.ru", "Netherlands", "mock-deal", "visa")
     ]
     expected_df = session.createDataFrame(data=expected_data,
                                            schema=input_schema)
