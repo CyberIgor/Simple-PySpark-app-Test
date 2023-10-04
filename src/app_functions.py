@@ -34,8 +34,9 @@ def filtering(df: DataFrame, values_to_filter: str, filtering_field="country"):
     Returns:
         DataFrame: A DataFrame filterd by specified values of a given column.
     """
-
-    return df.filter(df[filtering_field].isin(*values_to_filter.split(",")))
+    filtered_df = df.filter(df[filtering_field].isin(*values_to_filter.split(",")))
+    logger.info("Client records were filtered.")
+    return filtered_df
 
 # Creating custom function for renaming columns:
 def rename_columns(df: DataFrame, column_mapping: dict):
@@ -52,4 +53,5 @@ def rename_columns(df: DataFrame, column_mapping: dict):
 
     for old_col, new_col in column_mapping.items():
         df = df.withColumnRenamed(old_col, new_col)
+    logger.info("Output dataframe columns renamed.")
     return df
