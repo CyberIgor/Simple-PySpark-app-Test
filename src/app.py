@@ -32,6 +32,9 @@ from pyspark.sql import SparkSession
 from pyspark.sql.types import StructType, StructField, StringType, IntegerType
 from argparse import ArgumentParser
 
+# Create an ArgumentParser object to parse arguments from the command line:
+parser = ArgumentParser(description="Parser for the required arguments")
+
 # Add three arguments to the previously created parser:
 parser.add_argument('--df1_path', type=str, help='Path to clients file')
 parser.add_argument('--df2_path', type=str, help='Path to transactions file')
