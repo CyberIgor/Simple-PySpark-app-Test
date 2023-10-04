@@ -18,7 +18,7 @@ handler.setFormatter(formatter)
 logger.addHandler(handler)
 
 # Creating custom function for filtering dataframe:
-def filtering(df: DataFrame, values_to_filter: str, filtering_field="country"):
+def filtering(df: DataFrame, values_to_filter: str, filtering_field="country", logger=logger):
     """
     Filter PySpark DataFrame using specified values of a filtering field.
     
@@ -39,7 +39,7 @@ def filtering(df: DataFrame, values_to_filter: str, filtering_field="country"):
     return filtered_df
 
 # Creating custom function for renaming columns:
-def rename_columns(df: DataFrame, column_mapping: dict):
+def rename_columns(df: DataFrame, column_mapping: dict, logger=logger):
     """
     Rename columns in a PySpark DataFrame.
 
