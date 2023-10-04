@@ -34,7 +34,8 @@ def filtering(df: DataFrame, values_to_filter: str, filtering_field="country", l
     Returns:
         DataFrame: A DataFrame filterd by specified values of a given column.
     """
-    filtered_df = df.filter(df[filtering_field].isin(*values_to_filter.split(",")))
+    values_to_filter = [value.strip() for value in values_to_filter.split(",")]
+    filtered_df = df.filter(df[filtering_field].isin(*values_to_filter))
     logger.info("Client records were filtered.")
     return filtered_df
 
