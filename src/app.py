@@ -13,7 +13,7 @@ Arguments:
 Output:
     - The resulting DataFrame after joining and renaming columns is displayed.
     - The number of rows in the resulting DataFrame is printed.
-    - A log file ('events.log') is generated to record script events.
+    - A log file ('events.log') is generated to record script events. The logger is created within app_functions.py which is ought to be imported.
 
 Note:
     This script assumes that the input CSV files have headers and infers the schema.
@@ -30,27 +30,7 @@ Example:
 from app_functions import *
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StructType, StructField, StringType, IntegerType
-from logging import getLogger, Formatter, INFO
-from logging.handlers import RotatingFileHandler
 from argparse import ArgumentParser
-
-# Set up the logger:
-logger = getLogger('my_app_logger')
-logger.setLevel(INFO)
-
-# Create a RotatingFileHandler with a maximum file size of 5 MB and keep 5 backup files:
-log_file = 'events.log'
-handler = RotatingFileHandler(log_file, maxBytes=5 * 1024 * 1024, backupCount=5)
-
-# Create a formatter for logger:
-formatter = Formatter('%(asctime)s - %(levelname)s: %(message)s')
-handler.setFormatter(formatter)
-
-# Add the handler to the logger:
-logger.addHandler(handler)
-
-# Create an ArgumentParser object to parse arguments from the command line:
-parser = ArgumentParser(description="Parser for the required arguments")
 
 # Add three arguments to the previously created parser:
 parser.add_argument('--df1_path', type=str, help='Path to clients file')
@@ -77,7 +57,7 @@ logger.info("Two PySpark dataframes were created out of CSV-files. Sensetive inf
 
 # Filtering clients table and joining it with transactions table:
 output_df = filtering(df1, values_to_filter).join(df2, on="id", how="inner")
-logger.info("Client records were filtered - and two dataframes were joined using 'id' field as a primary key.")
+logger.info("Two dataframes were joined using 'id' field as a primary key.")
 
 column_mapping = {
     "id": "client_identifier",
@@ -87,7 +67,6 @@ column_mapping = {
 
 # Renaming columns:
 output_df = rename_columns(output_df, column_mapping)
-logger.info("Output dataframe columns renamed.")
 
 # Displaying the number of records in the output dataframe:
 output_df.show()
