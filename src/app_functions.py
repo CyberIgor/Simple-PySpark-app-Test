@@ -1,4 +1,21 @@
 from pyspark.sql import DataFrame
+from logging import getLogger, Formatter, INFO
+from logging.handlers import RotatingFileHandler
+
+# Set up the logger:
+logger = getLogger('my_app_logger')
+logger.setLevel(INFO)
+
+# Create a RotatingFileHandler with a maximum file size of 5 MB and keep 5 backup files:
+log_file = 'events.log'
+handler = RotatingFileHandler(log_file, maxBytes=5 * 1024 * 1024, backupCount=5)
+
+# Create a formatter for logger:
+formatter = Formatter('%(asctime)s - %(levelname)s: %(message)s')
+handler.setFormatter(formatter)
+
+# Add the handler to the logger:
+logger.addHandler(handler)
 
 # Creating custom function for filtering dataframe:
 def filtering(df: DataFrame, values_to_filter: str, filtering_field="country"):
